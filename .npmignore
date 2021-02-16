@@ -1,0 +1,14 @@
+# dotfiles, configs
+.gitattributes
+.gitignore
+.eslintrc*
+jest.*
+tsconfig.*
+
+# folders
+.github/
+src/
+
+# misc
+*.env
+*.tgz
