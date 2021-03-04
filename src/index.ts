@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { CommandoClient } from 'discord.js-commando';
 
-import { SvadaCommand } from './commands';
+import { QuoteCommand, SvadaCommand } from './commands';
 
 dotenv.config();
 
@@ -15,6 +15,6 @@ const client = new CommandoClient({
 client.registry
   .registerDefaults()
   .registerGroup('examples', 'Examples')
-  .registerCommands([SvadaCommand]);
+  .registerCommands([QuoteCommand, SvadaCommand]);
 
 client.login(BOT_TOKEN);

@@ -17,6 +17,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.31",
+    "@types/node-fetch": "^2.5.8",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
     "dotenv": "^8.2.0",
@@ -30,6 +31,7 @@
   "dependencies": {
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.12.2",
+    "node-fetch": "^2.6.1",
     "svada": "^1.0.3"
   }
 }
