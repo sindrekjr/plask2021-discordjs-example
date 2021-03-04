@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist",
+    "start": "npm run build && node dist",
     "test": "jest",
     "eslint": "eslint ./src/**/*.ts",
     "clean": "rm -rf dist",
@@ -16,16 +16,16 @@
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.31",
+    "@types/node": "^14.14.35",
     "@types/node-fetch": "^2.5.8",
-    "@typescript-eslint/eslint-plugin": "^4.16.1",
-    "@typescript-eslint/parser": "^4.16.1",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
     "dotenv": "^8.2.0",
-    "eslint": "^7.21.0",
-    "eslint-plugin-jest": "^24.1.5",
+    "eslint": "^7.22.0",
+    "eslint-plugin-jest": "^24.3.1",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.3",
-    "typescript": "^4.2.2",
+    "typescript": "^4.2.3",
     "typescript-eslint": "0.0.1-alpha.0"
   },
   "dependencies": {
