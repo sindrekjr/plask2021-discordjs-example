@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
 import { Command, CommandoClient, CommandoMessage } from 'discord.js-commando';
-import svada from 'svada';
+
+import { getSvada } from '../../utils';
 
 export class SvadaCommand extends Command {
   constructor(client: CommandoClient) {
@@ -13,6 +14,6 @@ export class SvadaCommand extends Command {
   }
 
   run(msg: CommandoMessage): Promise<Message> {
-    return msg.say(svada());
+    return msg.say(getSvada());
   }
 }

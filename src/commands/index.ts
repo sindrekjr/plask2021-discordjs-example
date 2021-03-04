@@ -1,1 +1,1 @@
-export { SvadaCommand } from './examples/svada';
+export { SvadaCommand } from './examples/svada.command';
