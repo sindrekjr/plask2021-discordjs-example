@@ -3,10 +3,5 @@ setup:
     - plan: heroku-postgresql
       as: DATABASE
 build:
-  worker:
-    command:
-      - npm run build
-run:
-  worker:
-    command:
-      - npm start
+  docker:
+    worker: Dockerfile
