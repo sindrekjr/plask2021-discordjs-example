@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "npm run build && npm start",
     "start": "node dist",
     "test": "jest",
     "eslint": "eslint ./src/**/*.ts",

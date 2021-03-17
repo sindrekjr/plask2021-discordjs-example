@@ -1,3 +1,4 @@
+import { HTTPError } from 'discord.js';
 import fetch from 'node-fetch';
 
 export interface Quote {
@@ -5,6 +6,12 @@ export interface Quote {
   quote: string;
   tags: string[];
   image: string;
+  attribution: {
+    title: string;
+    thumbnail: string;
+    href: string;
+    footer: string;
+  }
 }
 
 export interface QuoteOfDay {
@@ -16,6 +23,10 @@ export interface QuoteCategories {
 }
 
 export interface QuotesApiResponseBody<T> {
+  error?: {
+    code: number;
+    message: string;
+  }
   success: {
     total: number;
   };
@@ -23,16 +34,27 @@ export interface QuotesApiResponseBody<T> {
 }
 
 export class QuotesApiProxy {
-  private static baseUrl = 'https://quotes.rest/';
+  public static categories: string[] = ['inspire', 'management', 'sports', 'life', 'funny', 'love', 'art', 'students'];
 
-  static async getQuoteOfDay(category?: string): Promise<string | undefined> {
+  private static baseUrl = 'https://quotes.rest/';
+  private static attribution = {
+    title: 'They Said So®',
+    thumbnail: 'https://theysaidso.com/branding/theysaidso.png',
+    footer: 'Powered by quotes from theysaidso.com',
+    href: 'https://theysaidso.com',
+  }
+
+  static async getQuoteOfDay(category?: string): Promise<Quote | undefined> {
     const response = await fetch(category ? `${this.baseUrl}qod?category=${category}&language=en` : `${this.baseUrl}qod?language=en`);
     const json: QuotesApiResponseBody<QuoteOfDay> = await response.json();
-    const { success: { total }, contents: { quotes } } = json;
+    if (json.error) throw new HTTPError(json.error.message, 'HTTPError', json.error.code, 'GET', 'QuotesApiProxy');
 
+    const { success: { total }, contents: { quotes } } = json;
     if (total) {
-      const { quote } = quotes[0];
-      return quote;
+      return {
+        ...quotes[0],
+        attribution: this.attribution,
+      };
     }
   }
 
